@@ -1,6 +1,11 @@
 #!/usr/bin/python3
+"""
+Module to gather data from an API and display employee TODO progress.
+"""
+
 import requests
 import sys
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2 or not sys.argv[1].isdigit():
@@ -8,8 +13,8 @@ if __name__ == "__main__":
         sys.exit(1)
 
     employee_id = int(sys.argv[1])
-    user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
+    user_url = "https://jsonplaceholder.typicode.com/users/{}".format(employee_id)
+    todos_url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(employee_id)
 
     user_resp = requests.get(user_url)
     todos_resp = requests.get(todos_url)
